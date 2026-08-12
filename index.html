@@ -1,3 +1,70 @@
+<!-- INÍCIO: BOTÃO WHATSAPP FLUTUANTE -->
+<style>
+  .whatsapp-pulse-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .whatsapp-pulse-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+
+  .whatsapp-pulse-btn::before,
+  .whatsapp-pulse-btn::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #25D366;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    animation: wa-pulse 1.8s infinite;
+    z-index: -1;
+  }
+
+  .whatsapp-pulse-btn::after {
+    animation-delay: 0.9s;
+  }
+
+  .whatsapp-pulse-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  @keyframes wa-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(2.1);
+      opacity: 0;
+    }
+  }
+</style>
+
+<a href="https://wa.me/5511999999999?text=Olá!" target="_blank" class="whatsapp-pulse-btn" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 0c-6.627 0-12 5.373-12 12 0 2.115.547 4.1 1.505 5.836l-1.505 5.483 5.586-1.467c1.7.915 3.639 1.431 5.672 1.431 6.627 0 12-5.373 12-12s-5.373-12-12-12zm.232 20.306c-1.802 0-3.535-.49-5.044-1.393l-.361-.217-3.34.876.891-3.246-.237-.376c-.985-1.569-1.511-3.39-1.511-5.266 0-5.342 4.346-9.688 9.688-9.688s9.688 4.346 9.688 9.688-4.346 9.688-9.688 9.688zm5.289-7.371c-.29-.145-1.714-.848-1.979-.944-.266-.096-.459-.145-.652.145-.193.29-.749.944-.918 1.138-.169.193-.338.217-.628.072-.29-.145-1.225-.452-2.333-1.442-.862-.769-1.443-1.718-1.612-2.008-.169-.29-.018-.447.126-.59.13-.13.29-.338.435-.507.145-.169.193-.29.29-.483.096-.193.048-.361-.024-.507-.072-.145-.652-1.569-.893-2.149-.235-.566-.47-.489-.652-.498-.168-.008-.362-.01-.555-.01s-.507.072-.772.361c-.266.29-1.014.991-1.014 2.415s1.038 2.799 1.182 3.003c.145.193 2.043 3.12 4.949 4.373.691.298 1.23.476 1.651.61.694.221 1.326.19 1.825.115.556-.083 1.714-.7 1.956-1.376.242-.676.242-1.255.169-1.376-.073-.12-.266-.193-.556-.338z"/>
+  </svg>
+</a>
+<!-- FIM: BOTÃO WHATSAPP FLUTUANTE -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
