@@ -344,7 +344,392 @@
       </div>
       <p class="price-note">Acesso digital imediato após a compra.</p>
     </div>
+<!-- ESTILOS E DESIGN EMOCIONAL (CSS) -->
+<style>
+  .social-proof-section {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
 
+  .emotional-header {
+    text-align: center;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #ffe3e3;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+
+  .emotional-header h3 {
+    margin: 0 0 10px 0;
+    color: #1a1a1a;
+    font-size: 22px;
+  }
+
+  .emotional-header p {
+    margin: 0;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2e7d32;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(0.95); opacity: 1; }
+  }
+
+  /* Cards de Comentários */
+  .review-card-modern {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.2s ease;
+  }
+
+  .review-card-modern:hover {
+    transform: translateY(-2px);
+  }
+
+  .author-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .author-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .author-name {
+    font-weight: 700;
+    color: #222;
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .location-text {
+    font-size: 12px;
+    color: #888;
+    margin: 2px 0 0 0;
+  }
+
+  .stars {
+    color: #FFB800;
+    font-size: 14px;
+  }
+
+  .comment-text {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+  }
+
+  .comment-footer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 12px;
+    color: #888;
+  }
+
+  .like-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .like-btn.liked {
+    color: #e53935;
+    font-weight: bold;
+  }
+
+  /* Form de envio dinamico */
+  .add-comment-box {
+    background: #f8f9fa;
+    border: 1px dashed #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .add-comment-box input, .add-comment-box textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
+  .add-comment-box button {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* Pop-up de Notificação Lateral */
+  .sales-pop {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #ffffff;
+    border-left: 4px solid #25D366;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    transform: translateY(150%);
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .sales-pop.show {
+    transform: translateY(0);
+  }
+
+  .sales-pop-text {
+    font-size: 13px;
+    color: #333;
+  }
+
+  .sales-pop-text strong {
+    color: #111;
+  }
+</style>
+
+<!-- ESTRUTURA DOS DEPOIMENTOS (HTML) -->
+<section class="social-proof-section">
+
+  <div class="emotional-header">
+    <h3>Histórias de quem tomou a decisão de mudar</h3>
+    <p>Pessoas comuns que superaram a incerteza e alcançaram resultados reais.</p>
+    <div class="live-badge">
+      <span class="dot"></span> 14 pessoas estão vendo esta página agora
+    </div>
+  </div>
+
+  <div id="reviews-list">
+    <!-- Depoimento 1 -->
+    <div class="review-card-modern">
+      <div class="author-row">
+        <div class="author-details">
+          <div class="avatar-img">AM</div>
+          <div>
+            <p class="author-name">Ana Maria Silveira</p>
+            <p class="location-text">São Paulo - SP • Compra Verificada</p>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <p class="comment-text">"Sinceramente, eu já tinha tentado de tudo e achava que isso não funcionaria para mim. Estava com medo de jogar dinheiro fora. Mas decidi dar uma última chance e me emocionei quando vi os primeiros resultados na primeira semana. Mudou minha rotina!"</p>
+      <div class="comment-footer">
+        <span>Há 12 minutos</span>
+        <button class="like-btn" onclick="toggleLike(this)">❤️ <span>24</span></button>
+      </div>
+    </div>
+
+    <!-- Depoimento 2 -->
+    <div class="review-card-modern">
+      <div class="author-row">
+        <div class="author-details">
+          <div class="avatar-img" style="background: linear-gradient(135deg, #007bff, #0056b3);">CR</div>
+          <div>
+            <p class="author-name">Carlos Roberto</p>
+            <p class="location-text">Belo Horizonte - MG • Compra Verificada</p>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <p class="comment-text">"O suporte e a clareza do conteúdo fazem toda a diferença. O valor cobrado é irrisório perto da paz de espírito que me trouxe. Se você está em dúvida, só vai. Não tem erro."</p>
+      <div class="comment-footer">
+        <span>Há 43 minutos</span>
+        <button class="like-btn" onclick="toggleLike(this)">❤️ <span>18</span></button>
+      </div>
+    </div>
+
+    <!-- Depoimento 3 -->
+    <div class="review-card-modern">
+      <div class="author-row">
+        <div class="author-details">
+          <div class="avatar-img" style="background: linear-gradient(135deg, #e53935, #e35d5b);">JL</div>
+          <div>
+            <p class="author-name">Juliana Lima</p>
+            <p class="location-text">Curitiba - PR • Compra Verificada</p>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <p class="comment-text">"Chegou tudo certo no meu e-mail assim que fechei o Pix. Conteúdo humano, direto ao ponto e sem enrolação."</p>
+      <div class="comment-footer">
+        <span>Há 2 horas</span>
+        <button class="like-btn" onclick="toggleLike(this)">❤️ <span>31</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Área interativa para o visitante deixar um comentário -->
+  <div class="add-comment-box">
+    <h4>Já é nosso cliente? Deixe seu depoimento</h4>
+    <input type="text" id="userName" placeholder="Seu Nome completo">
+    <textarea id="userComment" rows="3" placeholder="Conte como foi sua experiência com o produto..."></textarea>
+    <button onclick="addReview()">Publicar Depoimento</button>
+  </div>
+
+</section>
+
+<!-- Pop-up Dinâmico de Vendas -->
+<div id="salesPop" class="sales-pop">
+  <div style="font-size: 20px;">🛍️</div>
+  <div class="sales-pop-text">
+    <strong id="popName">Marcos S.</strong> acabou de adquirir o acesso.<br>
+    <span style="font-size: 11px; color: #777;" id="popTime">Há 2 minutos • Pix confirmado</span>
+  </div>
+</div>
+
+<!-- LÓGICA INTERATIVA (JAVASCRIPT) -->
+<script>
+  // Função para curtir comentários
+  function toggleLike(btn) {
+    let countSpan = btn.querySelector('span');
+    let currentLikes = parseInt(countSpan.innerText);
+    if (btn.classList.contains('liked')) {
+      btn.classList.remove('liked');
+      countSpan.innerText = currentLikes - 1;
+    } else {
+      btn.classList.add('liked');
+      countSpan.innerText = currentLikes + 1;
+    }
+  }
+
+  // Função para adicionar novo comentário na tela imediatamente
+  function addReview() {
+    const name = document.getElementById('userName').value;
+    const comment = document.getElementById('userComment').value;
+
+    if (!name || !comment) {
+      alert("Por favor, preencha o nome e o comentário.");
+      return;
+    }
+
+    const reviewsList = document.getElementById('reviews-list');
+    const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+
+    const newReview = document.createElement('div');
+    newReview.className = 'review-card-modern';
+    newReview.innerHTML = `
+      <div class="author-row">
+        <div class="author-details">
+          <div class="avatar-img" style="background: #555;">${initials}</div>
+          <div>
+            <p class="author-name">${name}</p>
+            <p class="location-text">Enviado agora • Aguardando verificação</p>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <p class="comment-text">"${comment}"</p>
+      <div class="comment-footer">
+        <span>Agora mesmo</span>
+        <button class="like-btn" onclick="toggleLike(this)">❤️ <span>0</span></button>
+      </div>
+    `;
+
+    reviewsList.prepend(newReview);
+
+    // Limpar campos
+    document.getElementById('userName').value = '';
+    document.getElementById('userComment').value = '';
+    alert("Obrigado pelo seu depoimento!");
+  }
+
+  // Pop-up simulado para gerar Urgência e Prova Social (Gatilho de Rebanho)
+  const fakeSales = [
+    { name: "Lucas M. (Rio de Janeiro)", time: "Há 3 minutos" },
+    { name: "Patricia A. (Porto Alegre)", time: "Há 1 minuto" },
+    { name: "Gabriel S. (Campinas)", time: "Há 5 minutos" },
+    { name: "Beatriz C. (Salvador)", time: "Há 2 minutos" }
+  ];
+
+  function showPop() {
+    const pop = document.getElementById('salesPop');
+    const randomSale = fakeSales[Math.floor(Math.random() * fakeSales.length)];
+    
+    document.getElementById('popName').innerText = randomSale.name;
+    document.getElementById('popTime').innerText = randomSale.time + ' • Compra confirmada';
+
+    pop.classList.add('show');
+
+    setTimeout(() => {
+      pop.classList.remove('show');
+    }, 4000); // Fica visível por 4 segundos
+  }
+
+  // Inicia o ciclo de notificações após 3 segundos da página carregar
+  setTimeout(() => {
+    showPop();
+    setInterval(showPop, 12000); // Repete a cada 12 segundos
+  }, 3000);
+</script>
     <div class="cover-frame">
       <span class="cover-badge">4 livros · 15 folhas cada</span>
       <div class="cover-card">
