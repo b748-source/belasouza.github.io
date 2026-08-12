@@ -381,20 +381,184 @@
       <p class="price-note">Acesso digital imediato a todos os 4 livros após a compra.</p>
     </div>
 
-    <!-- CENA DO LIVRO EM 3D COM A CAPA EMBUTIDA -->
-    <div class="book-scene" id="bookScene">
-      <div class="rosette"></div>
-      
-      <!-- Lápis flutuando em volta -->
-      <div class="pencil p1"></div>
-      <div class="pencil p2"></div>
-      <div class="pencil p3"></div>
-      <div class="pencil p4"></div>
+   <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capa 3D do Produto</title>
+<style>
+  :root {
+    --parchment: #FBF3E3;
+    --ink: #2A2118;
+    --indigo: #2C3A63;
+    --gold: #C89B3C;
+    --terracotta: #B5563C;
+    --sage: #6E8F6B;
+    --crimson: #8E3B3B;
+  }
 
-      <!-- Livro 3D com a foto da capa atualizada -->
-      <div class="book3d" id="book3d">
-        <div class="cover">
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAQzAvgDASIAAhEBAxEB/8QAHQAAAAcBAQEAAAAAAAAAAAAAAAECAwQFBgcICf/EAF0QAAECBAMEBQYHCgoIBQQCAwECAwAEBREGEiEHMUFREyJhcYEUMpGhsdEII0JScrLBFRY2VWJzdJKT4RckMzdDU1oS5f/EABoBAAIDAQEAAAAAAAAAAAAAAAADAQIEBQb/xAAyEQEAAgEDAwMCBQMDBQEAAAAAAQIRAwQSIRMxQQVRYSJxgTKBobHB8BQjM0KR4fEV/9oADAMagA0AAM4kEIBBhfI9aBAvAihAQX/SDQBAiM/384a/HlP/2sdsie/2QSm3ysZ7RAWlgRmvv4w1+PKf+1g/v4w1+PKd+1Ed9Hl90+RXHSYffHmFpIEZr7+cNfjynftRA+/nDX49p37UQdHl90+RS9Jh94eYWlgRm/v4w1+Pad+2ED798N/j2nfthB0eX3T5FR0mL3h5haSBGb+/jDX48p37UQ3m/v4w1+Pad+1g6PL7p8ijpMPvjzC0ndAjNffzhr8e079rB/fxhr8eU79qIOjy+6fIpOkw++PMLSwXGM39/GGvx7Tv2ogffxhr8e079qIOjy+6fIpA6TD748wtLAjNffzhr8eU79rB/fxhr8eU79qIOjy+6fIpekw++PMLSwIzX384at/v2nftRA+/nDX49p/7WDo8vunyKTpMPvjzC0kCM39/GGvx5T/2sH9/GGvx5Tv2og6PL7p8ijpMPvjzC0kDhGbOOMNfjynfthBffzhr8eU79qIOjy+6fIo6TD748wtJwgozf38Ya/HlP/awf38Yb/HlP/awdHl90+RR0mH3x5haOBGdONsOW/35T/2ogvv4w1+PKf+1g6PL7p8ijpMPvjzC0kCM39++G/x5T/2sD798N/j2nfthB0eX3T5FHSYffHmFo4OM2cb4b/HlP/awPvvwwP/XKf+1g6PL7p8ijo0PvjzC0cCM39++G/x5T/2sD798N/j2nfthB0eX3T5FHSYffHmFo4OM2cb4b/HlP/awP374b/HlP/awdHl90+R0dJh98eYWjg4zf374b/HlP/awPv4w3+PKf+1g6PL7p8ijpMPvjzC0kCM39++G/wBG/wAZ0/9rBffvhr/99p/7UQdHl90+RR0mH3x5haSDGbbxvhvM3fGVP/agfv3w3/33T/2sHR5fdPkdHSYffHmFo4GM39++G/x5T/2sAY3w3+PKf+1EHR5fdPkdHSIfeHmFpIOM2cb4b1tiCnf2ogvv4w3v/wB+U/8AawdHl90+RR0aH3x5haSDGcGOMNfjyn/tRA+/jDY4413/AGsHR5fdPkUdJh98eYWkgx3xnM45w2b2/GVP/awAY3w3p+PKf+1EHR5fdPkUdGg98eYWkg4zZxvhv/vyn/tYI44w2P8A1yn/ALUQdHl90+RR0mH3x5haWBGa++jDX47p/wC1A+/jDZH++U/9qB0aX3T5FHSYffHmFpIMZw45w2L3/GVP/awI44w3/s
+  body {
+    margin: 0;
+    background: var(--parchment);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ---------- CENÁRIO 3D E ANIMAÇÕES ---------- */
+  .book-scene {
+    position: relative;
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    perspective: 1400px;
+  }
+
+  .rosette {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+      var(--indigo), var(--crimson), var(--gold), var(--sage), var(--indigo));
+    opacity: .16;
+    -webkit-mask-image: radial-gradient(circle, #000 55%, transparent 78%);
+            mask-image: radial-gradient(circle, #000 55%, transparent 78%);
+    animation: spin 50s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .book3d {
+    position: relative;
+    width: 230px;
+    height: 308px;
+    transform-style: preserve-3d;
+    transform: rotateY(-22deg) rotateX(6deg);
+    transition: transform .25s ease-out;
+    animation: bookfloat 6s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  @keyframes bookfloat {
+    0%, 100% { transform: rotateY(-22deg) rotateX(6deg) translateY(0); }
+    50% { transform: rotateY(-22deg) rotateX(6deg) translateY(-10px); }
+  }
+
+  .page {
+    position: absolute;
+    inset: 0;
+    background: var(--parchment);
+    border: 1px solid rgba(42,33,24,0.15);
+    border-radius: 4px 10px 10px 4px;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.12);
+    transform-origin: left center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .page svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .page-1 {
+    transform: rotateY(-18deg) translateZ(1px);
+    animation: flip1 7s ease-in-out infinite;
+  }
+
+  .page-2 {
+    transform: rotateY(-8deg) translateZ(2px);
+    background: #FEFAF0;
+    animation: flip2 7s ease-in-out infinite;
+  }
+
+  .cover {
+    position: absolute;
+    inset: 0;
+    border-radius: 4px 10px 10px 4px;
+    overflow: hidden;
+    transform: translateZ(3px);
+    box-shadow: 3px 6px 18px rgba(0,0,0,0.28), inset 0 0 0 6px rgba(200,155,60,0.35);
+  }
+
+  .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @keyframes flip1 {
+    0%, 12%, 100% { transform: rotateY(-18deg) translateZ(1px); }
+    45%, 60% { transform: rotateY(-150deg) translateZ(1px); }
+  }
+
+  @keyframes flip2 {
+    0%, 20%, 100% { transform: rotateY(-8deg) translateZ(2px); }
+    50%, 65% { transform: rotateY(-140deg) translateZ(2px); }
+  }
+
+  .pencil {
+    position: absolute;
+    width: 14px;
+    height: 90px;
+    border-radius: 7px;
+    transform-style: preserve-3d;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.25);
+    z-index: 3;
+  }
+
+  .pencil::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 14px;
+    background: inherit;
+    filter: brightness(0.75);
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+  }
+
+  .pencil.p1 { background: var(--terracotta); top: 14px; left: -8px; animation: orbit1 9s ease-in-out infinite; }
+  .pencil.p2 { background: var(--sage); bottom: 26px; left: -24px; animation: orbit2 8s ease-in-out infinite; }
+  .pencil.p3 { background: var(--gold); top: 34px; right: -18px; animation: orbit3 10s ease-in-out infinite; }
+  .pencil.p4 { background: var(--crimson); bottom: 10px; right: -4px; animation: orbit4 7.5s ease-in-out infinite; }
+
+  @keyframes orbit1 { 0%, 100% { transform: rotate(-18deg) translateY(0) translateZ(40px); } 50% { transform: rotate(-30deg) translateY(-14px) translateZ(60px); } }
+  @keyframes orbit2 { 0%, 100% { transform: rotate(20deg) translateY(0) translateZ(-30px); } 50% { transform: rotate(32deg) translateY(12px) translateZ(-10px); } }
+  @keyframes orbit3 { 0%, 100% { transform: rotate(16deg) translateY(0) translateZ(50px); } 50% { transform: rotate(4deg) translateY(-10px) translateZ(70px); } }
+  @keyframes orbit4 { 0%, 100% { transform: rotate(-10deg) translateY(0) translateZ(-20px); } 50% { transform: rotate(-22deg) translateY(10px) translateZ(0px); } }
+</style>
+</head>
+<body>
+
+  <div class="book-scene" id="bookScene">
+    <div class="rosette"></div>
+    <div class="pencil p1"></div>
+    <div class="pencil p2"></div>
+    <div class="pencil p3"></div>
+    <div class="pencil p4"></div>
+
+    <div class="book3d" id="book3d">
+      <div class="page page-2">
+        <svg viewBox="0 0 100 100"><path d="M20 60 Q35 25 50 45 Q65 25 80 60" fill="none" stroke="#B5563C" stroke-width="3" stroke-linecap="round"/><circle cx="50" cy="30" r="6" fill="none" stroke="#C89B3C" stroke-width="3"/></svg>
+      </div>
+      <div class="page page-1">
+        <svg viewBox="0 0 100 100"><path d="M30 70 L50 20 L70 70 Z" fill="none" stroke="#2C3A63" stroke-width="3" stroke-linejoin="round"/><path d="M40 70 L60 70" stroke="#2C3A63" stroke-width="3"/></svg>
+      </div>
+      <div class="cover">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAQzAvgDASIAAhEBAxEB/8QAHQAAAAcBAQEAAAAAAAAAAAAAAAECAwQFBgcICf/EAF0QAAECBAMEBQYHCgoIBQQCAwECAwAEBREGEiEHMUFREyJhcYEUMpGhsdEII0JScrLBFRY2VWJzdJKT4RckMzdDU1oS5f/EABoBAAIDAQEAAAAAAAAAAAAAAAADAQIEBQb/xAAyEQEAAgEDAwMCBQMDBQEAAAAAAQIRAwQSIRMxQQVRYSJxgTKBobHB8BQjM0KR4fEV/9oADAMagA0AAM4kEIBBhfI9aBAvAihAQX/SDQBAiM/384a/HlP/2sdsie/2QSm3ysZ7RAWlgRmvv4w1+PKf+1g/v4w1+PKd+1Ed9Hl90+RXHSYffHmFpIEZr7+cNfjynftRA+/nDX49p37UQdHl90+RS9Jh94eYWlgRm/v4w1+Pad+2ED798N/j2nfthB0eX3T5FR0mL3h5haSBGb+/jDX48p37UQ3m/v4w1+Pad+1g6PL7p8ijpMPvjzC0ndAjNffzhr8e079rB/fxhr8eU79qIOjy+6fIpOkw++PMLSwXGM39/GGvx7Tv2ogffxhr8e079qIOjy+6fIpA6TD748wtLAjNffzhr8eU79rB/fxhr8eU79qIOjy+6fIpekw++PMLSwIzX384at/v2nftRA+/nDX49p/7WDo8vunyKTpMPvjzC0kCM39/GGvx5T/2sH9/GGvx5Tv2og6PL7p8ijpMPvjzC0kDhGbOOMNfjynfthBffzhr8eU79qIOjy+6fIo6TD748wtJwgozf38Ya/HlP/awf38Yb/HlP/awdHl90+RR0mH3x5haOBGdONsOW/35T/2ogvv4w1+PKf+1g6PL7p8ijpMPvjzC0kCM39++G/x5T/2sD798N/j2nfthB0eX3T5FHSYffHmFo4OM2cb4b/HlP/awPvvwwP/XKf+1g6PL7p8ijo0PvjzC0cCM39++G/x5T/2sD798N/j2nfthB0eX3T5FHSYffHmFo4OM2cb4b/HlP/awP374b/HlP/awdHl90+R0dJh98eYWjg4zf374b/HlP/awPv4w3+PKf+1g6PL7p8ijpMPvjzC0kCM39++G/wBG/wAZ0/9rBffvhr/99p/7UQdHl90+RR0mH3x5haSDGbbxvhvM3fGVP/agfv3w3/33T/2sHR5fdPkdHSYffHmFo4GM39++G/x5T/2sAY3w3+PKf+1EHR5fdPkdHSIfeHmFpIOM2cb4b1tiCnf2ogvv4w3v/wB+U/8AawdHl90+RR0aH3x5haSDGcGOMNfjyn/tRA+/jDY4413/AGsHR5fdPkUdJh98eYWkgx3xnM45w2b2/GVP/awAY3w3p+PKf+1EHR5fdPkUdGg98eYWkg4zZxvhv/vyn/tYI44w2P8A1yn/ALUQdHl90+RR0mH3x5haWBGa++jDX47p/wC1A+/jDZH++U/9qB0aX3T5FHSYffHmFpIMZw45w2L3/GVP/awI44w3/s
 3384a/HlP/agfI5/dPkUdGg94eYWlgRmvv5w3+O6f+1g/v4w3+Pad+1g6PL7p8ijdJh98eYWkgxmzv4w1ff8A51p37WBA+
 /nDXD/O1O/awMjk90+RR0mD3x5haWBAvGa++fDf++6f+1A/zvhv/AL7T/wBrB0eX3T5FJ0mH3h5haWBB3
 jN/fvhof+u0/9rBffvhr8eU79sIOjy+6fI6Okwe+PMLR3ggYzRxxhs/
@@ -433,6 +597,12 @@ M3v
 U
 eU
 yv9d45e03iK4eX/2Q==" alt="Capa do Livro">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
       </div>
     </div>
   </div>
